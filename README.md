@@ -93,7 +93,7 @@ Capture packet data into a file called `networktraffic.pcap` using:
 sudo tcpdump -i eth0 -nn -c9 port 80 -w networktraffic.pcap &
 ```
 
-Press the `ENTER` key to get your command prompt back after running this command. Let us first of all run `ls -l` to list out the files and directories currently in the home directory, as pointed out by the 1st arrow, there is only `sample.pcap`. This command runs in the background, but some output text will appear in your terminal as pointed to by the 2nd arrow.
+Press the `ENTER` key to get your command prompt back after running this command. Let us first of all run `ls -l` to list out the files and directories currently in the home directory, as pointed out by the 1st arrow, there is only `sample.pcap`. This command runs in the background, but some output text will appear in your terminal as pointed to by the 2nd arrow.<br>
 **View: [Step3A](screenshots/Step3A)**
 
 This command will run tcpdump in the background with the following options:
@@ -155,7 +155,7 @@ This command will run tcpdump with the following options:
 This article explains how to use the network protocol analyser command line tool `tcpdump` to capture and analyse network traffic. First, we identify a network interface, then use tcpdump to filter and capture live network traffic. We explain the tcpdump command and its options, and how to interpret the output. Lastly, we explain how to save captured network data to a file and filter the data.
 
 ## LinkedIn Article.
-- [Analyse Packets with tcpdump](https://www.linkedin.com/pulse/kali-linux-users-account-management-enoch-agbu-hhzof)
+- [Analyse Packets with tcpdump](https://www.linkedin.com/pulse/analyse-packets-tcpdump-enoch-agbu-p3tvf)
 
 ## Connect with me.
 [🔗 LinkedIn](https://www.linkedin.com/in/agbuenoch)<br>
