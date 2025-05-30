@@ -3,14 +3,14 @@ This project used the command-line tool `tcpdump` to capture and analyse live ne
 
 ## Step 1: Identify Network Interfaces.
 Run `pwd` to print the current working directory as pointed to by the 1st arrow. To list all files and directories in the current working directory, run `ls -l`, which lists all the directory contents, as pointed to by the 2nd arrow. There is only one file `sample.pcap` in the `/home/analyst directory`.<br>
-**View: [Step1A](screenshots/Step1A)**
+**View: [Step1A](screenshots/Step1A.png)**
 
 We must first of all identify the network interfaces that can be used to capture network packet data. Run the command 
 ```bash
 sudo ifconfig
 ```
 to identify the available interfaces. The 1st and 2nd arrows point to the `eth0` and `lo` network interfaces, respectively. The Ethernet network interface is identified by the entry with the eth prefix.<br>
-**View: [Step1B](screenshots/Step1B)**
+**View: [Step1B](screenshots/Step1B.png)**
 
 Alternatively, we can use `tcpdump` to identify the interface options available for packet capture.
 ```bash
@@ -18,7 +18,7 @@ sudo tcpdump -D
 ```
 
 This command may be useful on systems that do not include the `ifconfig` command. The screenshot below lists all available network interfaces we can use to capture packets, as pointed out by the arrow. The network interfaces include `eth0, any, lo, nflog, nfqueue`. Notice that `eth0` and `any` network interfaces are up and running.<br>
-**View: [Step1C](screenshots/Step1C)**
+**View: [Step1C](screenshots/Step1C.png)**
 
 - tcpdump = This is a command-line packet capture tool.
 - -D = This will display a numbered list of all available interfaces.
@@ -56,27 +56,27 @@ Run `tcpdump` with the following options or flags:
 - `-v`: Display detailed packet data.
 - `-c5`: Capture 5 packets of data.
 
-**View: [Step2A](screenshots/Step2A)**
+**View: [Step2A](screenshots/Step2A.png)**
 
 Let's take a detailed look at the packet information that this command has returned. Five packets were captured as pointed to by the numbered arrows, with each packet starting with a `time stamp` (in Hours, Minutes, and Seconds, e.g. 06:37:28.000526), followed by the protocol type, `IP`.
 
 At the start of the packet output, tcpdump reported that it was listening on the `eth0` interface, and it provided information on the `link type` and the capture size in `bytes`:<br>
-**View: [Step2B](screenshots/Step2B)**
+**View: [Step2B](screenshots/Step2B.png)**
 
 Looking at the first packet, which is highlighted in Red-Orange as pointed to by the 1st arrow, the first field is the packet's `timestamp`, followed by the protocol type, `IP`. The verbose option, `-v`, has provided more details about the IP packet fields, such as `TOS, TTL, offset, flags`, internal protocol type (in this case, `TCP (6)`), and the `length` of the outer IP packet in bytes:<br>
-**View: [Step2C](screenshots/Step2C)**
+**View: [Step2C](screenshots/Step2C.png)**
 
 The specific details about these fields are beyond the scope of this article. But you should know that these are properties that relate to the IP network packet. 
 
 In the next section, the data shows the systems that are communicating with each other:<br>
-**View: [Step2D](screenshots/Step2D)**
+**View: [Step2D](screenshots/Step2D.png)**
 
 By default, `tcpdump` will convert `IP addresses` into `names`, as in the screenshot. The name of your Linux virtual machine, also included in the command prompt, appears here as the source for one packet and the destination for the second packet. In your live data, the name will be a different set of letters and numbers.
 
 The direction of the arrow `>` indicates the direction of the traffic flow in this packet. Each system name includes a suffix with the port number (`.5000` in the screenshot), which is used by the source and the destination systems for this packet.
 
 The remaining data filters the header data for the inner TCP packet:<br>
-**View: [Step2E](screenshots/Step2E)**
+**View: [Step2E](screenshots/Step2E.png)**
 
 The `flags` field identifies `TCP flags`. In this case, the `P` represents the `push` flag, and the period `.` indicates it's an `ACK` flag. This means the packet is pushing out data.
 
@@ -95,7 +95,7 @@ sudo tcpdump -i eth0 -nn -c9 port 80 -w networktraffic.pcap &
 ```
 
 Press the `ENTER` key to get your command prompt back after running this command. Let us first of all run `ls -l` to list out the files and directories currently in the home directory, as pointed out by the 1st arrow, there is only `sample.pcap`. This command runs in the background, but some output text will appear in your terminal as pointed to by the 2nd arrow.<br>
-**View: [Step3A](screenshots/Step3A)**
+**View: [Step3A](screenshots/Step3A.png)**
 
 This command will run tcpdump in the background with the following options:
 
@@ -125,7 +125,7 @@ sudo tcpdump -nn -r networktraffic.pcap
 ```
 
 to filter the packet header data from the `networktraffic.pcap` capture file. You will notice that no detailed information about IP is presented here, and the output return is a bit less compared to when we use the `-v` option/flag. As pointed to by the 1st arrow, tcpdump is reading the packets from the packets saved in `networktraffic.pcap`.<br>
-**View: [Step4A](screenshots/Step4A)**
+**View: [Step4A](screenshots/Step4A.png)**
 
 This command will run tcpdump with the following options:
 
@@ -143,7 +143,7 @@ sudo tcpdump -nn -r capture.pcap -X
 ```
 
 to filter the extended packet data as pointed to by the 3rd arrow from the `networktraffic.pcap` capture file.<br>
-**View: [Step4B](screenshots/Step4B)**
+**View: [Step4B](screenshots/Step4B.png)**
 
 This command will run tcpdump with the following options:
 - `-nn`: Disable port and protocol name lookup.
