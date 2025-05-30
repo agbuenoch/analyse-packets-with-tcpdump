@@ -55,6 +55,7 @@ Run `tcpdump` with the following options or flags:
 - `-i eth0`: Capture data specifically from the eth0 interface.
 - `-v`: Display detailed packet data.
 - `-c5`: Capture 5 packets of data.
+
 **View: [Step2A](screenshots/Step2A)**
 
 Let's take a detailed look at the packet information that this command has returned. Five packets were captured as pointed to by the numbered arrows, with each packet starting with a `time stamp` (in Hours, Minutes, and Seconds, e.g. 06:37:28.000526), followed by the protocol type, `IP`.
